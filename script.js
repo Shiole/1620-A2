@@ -72,6 +72,10 @@ function renderIndex(contactList) {
 /* Create a function called cleanUpView that removes all of the DOM nodes that 
 are unique to the View page. This function takes no parameters. */
 
+function cleanUpView() {
+    let page = document.querySelector(".contactinfo");
+    page.remove();
+}
 
 
 /* Create a function called renderView that creates all of the DOM nodes that are
