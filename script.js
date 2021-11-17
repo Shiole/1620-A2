@@ -140,9 +140,158 @@ function renderView(contact) {
 
 /* Create a function called cleanUpCreate that removes all of the DOM nodes that
 are unique to the Create page. This function takes no parameters. */
-
+function cleanUpCreate() {
+    let page = document.querySelector(".contactedit");
+    page.remove();
+}
 
 /* Create a function called renderCreate that creates all of the DOM nodes that
 are unique to the Create page. This function will take in a single parameter, which
 is an object that represents a single contact. Much like renderIndex, this function
 is reponsible for actually modifying the web page. */
+
+function renderCreate(contact) {
+    let main = document.querySelector(".main");
+
+    // Wrapper 
+    let contactEdit = document.createElement("div");
+    contactEdit.classList.add("contactedit");
+
+    // Contact IMG
+    let contactIMG = document.createElement("div");
+    contactIMG.classList.add("contactimg");
+
+    let img = document.createElement("img");
+    img.classList.add("profilepic");
+    img.setAttribute("src", "./img/profile.jpg")
+    img.setAttribute("alt", "Profile Picture");
+
+    contactIMG.appendChild(img);
+
+    // Form Container
+    let formContain = document.createElement("div");
+    formContain.classList.add("form");
+
+    // Form
+    let form = document.createElement("form");
+
+
+    // Name Field
+    let nameInputContain = document.createElement("div");
+    nameInputContain.classList.add("inputcontainer");
+
+    let nameInput = document.createElement("input");
+    nameInput.id = "contacname";
+    nameInput.setAttribute("type", "text");
+    nameInput.setAttribute("name", "contactname");
+    nameInput.setAttribute("placeholder", "Contact Name");
+
+    // Add Name Button
+    let addName = document.createElement("button");
+    addName.id = "extranamefield";
+    addName.classList.add("extrafield");
+    addName.setAttribute("name", "extranamefield");
+    addName.textContent = "+";
+
+    nameInputContain.appendChild(nameInput);
+    nameInputContain.appendChild(addName);
+
+
+    // Phone Field
+    let telInputContain = document.createElement("div");
+    telInputContain.classList.add("inputcontainer");
+
+    let telInput = document.createElement("input");
+    telInput.id = "contactphone";
+    telInput.setAttribute("type", "tel");
+    telInput.setAttribute("name", "contactphone");
+    telInput.setAttribute("placeholder", "Contact Phone");
+
+    // Add Phone Button
+    let addPhone = document.createElement("button");
+    addPhone.id = "extraphonefield";
+    addPhone.classList.add("extrafield");
+    addPhone.setAttribute("name", "extraphonefield");
+    addPhone.textContent = "+";
+
+    telInputContain.appendChild(telInput);
+    telInputContain.appendChild(addPhone);
+
+
+    // Address Field
+    let adrsInputContain = document.createElement("div");
+    adrsInputContain.classList.add("inputcontainer");
+
+    let adrsInput = document.createElement("input");
+    adrsInput.id = "contactaddress";
+    adrsInput.setAttribute("type", "text");
+    adrsInput.setAttribute("name", "contactaddress");
+    adrsInput.setAttribute("placeholder", "Contact Address");
+
+    // Add Address Button
+    let addAdrs = document.createElement("button");
+    addAdrs.id = "extraaddressfield";
+    addAdrs.classList.add("extrafield");
+    addAdrs.setAttribute("name", "extraaddressfield");
+    addAdrs.textContent = "+";
+
+    adrsInputContain.appendChild(adrsInput);
+    adrsInputContain.appendChild(addAdrs);
+
+
+    // Email Field
+    let emailInputContain = document.createElement("div");
+    emailInputContain.classList.add("inputcontainer");
+
+    let emailInput = document.createElement("input");
+    emailInput.id = "contactemail";
+    emailInput.setAttribute("type", "email");
+    emailInput.setAttribute("name", "contactemail");
+    emailInput.setAttribute("placeholder", "Contact Email");
+
+    // Add Email Button
+    let addEmail = document.createElement("button");
+    addEmail.id = "extraemailfield";
+    addEmail.classList.add("extrafield");
+    addEmail.setAttribute("name", "extraemailfield");
+    addEmail.textContent = "+";
+
+    adrsInputContain.appendChild(adrsInput);
+    adrsInputContain.appendChild(addAdrs);
+
+    emailInputContain.appendChild(emailInput);
+    emailInputContain.appendChild(addEmail);
+
+
+    // Submit/Cancel Buttons
+    let buttons = document.createElement("div");
+    buttons.classList.add("buttons");
+
+    let submit = document.createElement("button");
+    submit.id = "savecontact";
+    submit.classList.add("button", "save");
+    submit.setAttribute("type", "submit");
+    submit.setAttribute("name", "savecontact");
+    submit.textContent = "Save Contact";
+
+    let cancel = document.createElement("button");
+    cancel.id = "cancel";
+    cancel.classList.add("button", "cancel");
+    cancel.setAttribute("type", "reset");
+    cancel.setAttribute("name", "cancel");
+    cancel.textContent = "Cancel";
+
+    buttons.appendChild(submit);
+    buttons.appendChild(cancel);
+
+    form.appendChild(nameInputContain);
+    form.appendChild(telInputContain);
+    form.appendChild(adrsInputContain);
+    form.appendChild(emailInputContain);
+    form.appendChild(buttons);
+
+    formContain.appendChild(contactIMG);
+    formContain.appendChild(form);
+
+    main.appendChild(formContain);
+}
