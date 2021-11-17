@@ -83,7 +83,56 @@ unique to the View page. This function will take in a single parameter, which is
 an object that represents a single contact. Much like renderIndex, this function
 is reponsible for actually modifying the web page. */
 
+function renderView(contact) {
+    let main = document.querySelector(".main");
+    let contactInfo = document.createElement("div");
+    contactInfo.classList.add("contactinfo");
+   
+    let contactName = document.createElement("div");
+    contactName.classList.add("contactname");
+    contactName.textContent = contact["name"];
 
+    let contactIMG = document.createElement("img");
+    contactIMG.setAttribute("src", "./img/profile.jpg")
+    contactIMG.classList.add("profilepic");
+
+    let contactEmail = document.createElement("div");
+    contactEmail.classList.add("contactemail");
+    contactEmail.textContent = contact["email"];
+
+    let contactPhone = document.createElement("div");
+    contactPhone.classList.add("contactphone");
+    contactPhone.textContent = contact["phone"];
+
+    let contactAdd = document.createElement("div");
+    contactAdd.classList.add("contactaddress");
+    contactAdd.textContent = contact["address"];
+
+    let buttons = document.createElement("div");
+    buttons.classList.add("buttons");
+
+    let edit = document.createElement("button");
+    edit.classList.add("button", "edit");
+    edit.setAttribute("value", "Edit");
+    edit.textContent = "Edit";
+
+    let close = document.createElement("button");
+    close.classList.add("button", "close");
+    close.setAttribute("value", "Close");
+    close.textContent = "Close";
+
+    buttons.appendChild(edit);
+    buttons.appendChild(close);
+
+    contactName.appendChild(contactIMG);
+
+    contactInfo.appendChild(contactName);
+    contactInfo.appendChild(contactEmail);
+    contactInfo.appendChild(contactPhone);
+    contactInfo.appendChild(contactAdd);
+    contactInfo.appendChild(buttons);
+    main.appendChild(contactInfo);
+}
 
 
 
