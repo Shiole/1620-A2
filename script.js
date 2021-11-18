@@ -290,8 +290,11 @@ function renderCreate(contact) {
     form.appendChild(emailInputContain);
     form.appendChild(buttons);
 
-    formContain.appendChild(contactIMG);
     formContain.appendChild(form);
 
-    main.appendChild(formContain);
+    contactEdit.appendChild(contactIMG);
+    contactEdit.appendChild(formContain);
+
+    main.appendChild(contactEdit);
+    console.log(main);
 }
