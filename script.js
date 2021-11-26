@@ -1,3 +1,31 @@
+// Globals
+let contactList = [
+    {
+        name: "Giorno Giovana",
+        phone: "172-416-1985",
+        address: "594 Main St, Anytown, USA",
+        email: "ggiovana@goldenexperience.com",
+    },
+    {
+        name: "Bruno Bucciarati",
+        phone: "178-927-1980",
+        address: "443 Some St, Sometown, USA",
+        email: "bossrati@stickyfingers.com",
+    },
+    {
+        name: "Guido Mista",
+        phone: "182-123-1982",
+        address: "456 Another St, Anothertown, Canada",
+        email: "guista@sixpistols.com",
+    },
+    {
+        name: "Narancia Ghirga",
+        phone: "164-520-1983",
+        address: "577 Other St, Othertown, Canada",
+        email: "naranghirga@lilbomber.com",
+    },
+]
+
 // Index Page
 function cleanUpIndex() {
     let index = document.querySelectorAll(".main > a");
@@ -45,7 +73,7 @@ function renderView(contact) {
     let main = document.querySelector(".main");
     let contactInfo = document.createElement("div");
     contactInfo.classList.add("contactinfo");
-   
+
     let contactName = document.createElement("div");
     contactName.classList.add("contactname");
     contactName.textContent = contact["name"];
@@ -254,3 +282,14 @@ function renderCreate(contact) {
     main.appendChild(contactEdit);
     console.log(main);
 }
+
+// Event Listeners
+function renderContactsList(event) {
+    const href = document.getElementById("contactshome");
+    href.removeAttribute("href");
+    cleanUpIndex();
+    renderIndex(contactList);
+}
+
+const contacts = document.getElementById("contactshome");
+contacts.addEventListener('click', renderContactsList);
