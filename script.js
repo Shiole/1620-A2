@@ -48,7 +48,13 @@ function createSingleIndex(contact) {
     contactDiv.appendChild(name);
     card.appendChild(contactDiv);
 
-    const singleIndex = document.get
+    card.addEventListener('click', (e) => {
+        if(e.target == 'contact') {
+            e.preventDefault()
+            cleanUpIndex();
+            renderView(card);
+        }
+    });
 
     return card
 }
