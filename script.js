@@ -36,7 +36,6 @@ function cleanUpIndex() {
 
 
 function createSingleIndex(contact) {
-    // <a href="page3.html"><div class="contact"><p>Barry Allen</p></div></a>
     let card = document.createElement("a");
     card.setAttribute("href", "page3.html");
 
@@ -48,6 +47,8 @@ function createSingleIndex(contact) {
 
     contactDiv.appendChild(name);
     card.appendChild(contactDiv);
+
+    const singleIndex = document.get
 
     return card
 }
@@ -65,7 +66,9 @@ function renderIndex(contactList) {
 // View Page
 function cleanUpView() {
     let page = document.querySelector(".contactinfo");
-    page.remove();
+    if (page != null) {
+        page.remove();
+    }
 }
 
 
@@ -125,7 +128,9 @@ function renderView(contact) {
 // Create Page
 function cleanUpCreate() {
     let page = document.querySelector(".contactedit");
-    page.remove();
+    if (page != null){
+        page.remove();
+    }
 }
 
 
@@ -280,28 +285,29 @@ function renderCreate() {
 
     // Append container to main
     main.appendChild(contactEdit);
-    console.log(main);
 }
 
 
 // Event Listeners
 function goToContactsList(event) {
-    const href = document.getElementById("contactshome");
-    href.setAttribute('href', 'javascript:void(0)');
+    event.preventDefault();
+    cleanUpView();
+    cleanUpCreate();
     cleanUpIndex();
     renderIndex(contactList);
 }
 
-function goToCreate(event) {
-    const href = document.getElementById("newcontact");
-    href.setAttribute('href', 'javascript:void(0)');
-    cleanUpCreate();
-    renderCreate();
-}
-
-const contacts = document.getElementById("contactshome");
+const contacts = document.querySelector("#contactshome");
 contacts.removeAttribute("href");
 contacts.addEventListener('click', goToContactsList);
 
-const newContact = document.getElementById("newcontact");
+function goToCreate(event) {
+    event.preventDefault();
+    cleanUpCreate();
+    cleanUpIndex();
+    cleanUpView();
+    renderCreate();
+}
+
+const newContact = document.querySelector("#newcontact");
 newContact.addEventListener('click', goToCreate)
