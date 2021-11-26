@@ -48,7 +48,7 @@ function createSingleIndex(contact) {
     contactDiv.appendChild(name);
     card.appendChild(contactDiv);
 
-    card.addEventListener('click', (e) => {
+    card.addEventListener("click", (e) => {
         e.preventDefault()
         cleanUpIndex();
         renderView(contact);
@@ -126,7 +126,7 @@ function renderView(contact) {
     contactInfo.appendChild(buttons);
     main.appendChild(contactInfo);
 
-    close.addEventListener('click', (e) => {
+    close.addEventListener("click", (e) => {
         cleanUpView();
         renderIndex(contactList);
     });
@@ -266,6 +266,21 @@ function renderCreate() {
     submit.setAttribute("type", "submit");
     submit.setAttribute("name", "savecontact");
     submit.textContent = "Save Contact";
+    submit.addEventListener("click", (e) => {
+        e.preventDefault()
+        let newContact = {
+            name: nameInput.value,
+            phone: telInput.value,
+            address: adrsInput.value,
+            email: emailInput.value
+        }
+
+        if (newContact["name"] != null) {
+            contactList.push(newContact);
+            cleanUpCreate();
+            renderIndex(contactList);
+        }
+    })
 
     let cancel = document.createElement("button");
     cancel.id = "cancel";
@@ -273,7 +288,7 @@ function renderCreate() {
     cancel.setAttribute("type", "reset");
     cancel.setAttribute("name", "cancel");
     cancel.textContent = "Cancel";
-    cancel.addEventListener('click', (e) => {
+    cancel.addEventListener("click", (e) => {
         cleanUpCreate();
         renderIndex(contactList);
     });
@@ -312,7 +327,7 @@ function goToContactsList(event) {
 
 const contacts = document.querySelector("#contactshome");
 contacts.removeAttribute("href");
-contacts.addEventListener('click', goToContactsList);
+contacts.addEventListener("click", goToContactsList);
 
 function goToCreate(event) {
     event.preventDefault();
@@ -323,4 +338,4 @@ function goToCreate(event) {
 }
 
 const newContact = document.querySelector("#newcontact");
-newContact.addEventListener('click', goToCreate)
+newContact.addEventListener("click", goToCreate)
