@@ -339,3 +339,5 @@ function goToCreate(event) {
 
 const newContact = document.querySelector("#newcontact");
 newContact.addEventListener("click", goToCreate)
+
+window.onload = renderIndex(contactList);
