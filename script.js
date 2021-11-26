@@ -129,7 +129,7 @@ function cleanUpCreate() {
 }
 
 
-function renderCreate(contact) {
+function renderCreate() {
     let main = document.querySelector(".main");
 
     // Wrapper 
@@ -283,13 +283,25 @@ function renderCreate(contact) {
     console.log(main);
 }
 
+
 // Event Listeners
-function renderContactsList(event) {
+function goToContactsList(event) {
     const href = document.getElementById("contactshome");
-    href.removeAttribute("href");
+    href.setAttribute('href', 'javascript:void(0)');
     cleanUpIndex();
     renderIndex(contactList);
 }
 
+function goToCreate(event) {
+    const href = document.getElementById("newcontact");
+    href.setAttribute('href', 'javascript:void(0)');
+    cleanUpCreate();
+    renderCreate();
+}
+
 const contacts = document.getElementById("contactshome");
-contacts.addEventListener('click', renderContactsList);
+contacts.removeAttribute("href");
+contacts.addEventListener('click', goToContactsList);
+
+const newContact = document.getElementById("newcontact");
+newContact.addEventListener('click', goToCreate)
