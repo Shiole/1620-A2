@@ -278,7 +278,7 @@ function renderCreate() {
         if (newContact["name"] != null) {
             contactList.push(newContact);
             cleanUpCreate();
-            renderIndex(contactList);
+            renderView(newContact);
         }
     })
 
