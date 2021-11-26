@@ -273,6 +273,10 @@ function renderCreate() {
     cancel.setAttribute("type", "reset");
     cancel.setAttribute("name", "cancel");
     cancel.textContent = "Cancel";
+    cancel.addEventListener('click', (e) => {
+        cleanUpCreate();
+        renderIndex(contactList);
+    });
 
     buttons.appendChild(submit);
     buttons.appendChild(cancel);
