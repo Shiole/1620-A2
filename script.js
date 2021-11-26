@@ -49,11 +49,9 @@ function createSingleIndex(contact) {
     card.appendChild(contactDiv);
 
     card.addEventListener('click', (e) => {
-        if(e.target == 'contact') {
-            e.preventDefault()
-            cleanUpIndex();
-            renderView(card);
-        }
+        e.preventDefault()
+        cleanUpIndex();
+        renderView(contact);
     });
 
     return card
@@ -127,6 +125,11 @@ function renderView(contact) {
     contactInfo.appendChild(contactAdd);
     contactInfo.appendChild(buttons);
     main.appendChild(contactInfo);
+
+    close.addEventListener('click', (e) => {
+        cleanUpView();
+        renderIndex(contactList);
+    });
 }
 
 
@@ -134,7 +137,7 @@ function renderView(contact) {
 // Create Page
 function cleanUpCreate() {
     let page = document.querySelector(".contactedit");
-    if (page != null){
+    if (page != null) {
         page.remove();
     }
 }
